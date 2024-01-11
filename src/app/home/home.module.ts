@@ -81,7 +81,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   declarations: [],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MsalModule,
   ],
   providers: [
     {
@@ -104,6 +105,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MsalService,
     MsalGuard,
     MsalBroadcastService,
-  ]
+  ],
+  bootstrap: [MsalRedirectComponent],
 })
 export class HomeModule { }
