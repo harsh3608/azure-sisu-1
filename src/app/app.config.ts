@@ -38,7 +38,7 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: 'cd226c4e-43c2-432a-a790-a451945aa9b4',
+      clientId: '9e4b8d04-0d49-40df-8aa6-71e7a87dee4e',
       authority: 'https://login.microsoftonline.com/a353c19d-2a45-4b70-a946-4ade8421a354',
       redirectUri: 'http://localhost:4200/',
     },
@@ -50,7 +50,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
       loggerOptions: {
         loggerCallback,
         logLevel: LogLevel.Info,
-        piiLoggingEnabled: false,
+        piiLoggingEnabled: true,
       },
     },
   });
@@ -82,7 +82,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(),
     provideAnimationsAsync(),
-
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,
@@ -103,6 +102,7 @@ export const appConfig: ApplicationConfig = {
     MsalService,
     MsalGuard,
     MsalBroadcastService,
+    MsalModule,
   ],
 };
 

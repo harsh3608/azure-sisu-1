@@ -1,4 +1,4 @@
-import { Component ,Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
 import { AuthenticationResult, InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
 import { Subject, filter, takeUntil } from 'rxjs';
@@ -25,7 +25,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
-
+    debugger;
     this.msalBroadcastService.inProgress$
       .pipe(
         filter((status: InteractionStatus) => status === InteractionStatus.None),
@@ -41,6 +41,7 @@ export class AppComponent {
   }
 
   login() {
+    debugger;
     if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
       if (this.msalGuardConfig.authRequest) {
         this.authService.loginPopup({ ...this.msalGuardConfig.authRequest } as PopupRequest)
